@@ -16,6 +16,11 @@
 		04365F43266504B9001830BC /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04365F42266504B9001830BC /* MainVC.swift */; };
 		04365F462665056F001830BC /* LBTATools in Frameworks */ = {isa = PBXBuildFile; productRef = 04365F452665056F001830BC /* LBTATools */; };
 		0467E9F62668C7FB003AF0C7 /* LocationCarouselVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0467E9F52668C7FB003AF0C7 /* LocationCarouselVc.swift */; };
+		048E4E1E266BC4E100A8746D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E4E1D266BC4E100A8746D /* SearchView.swift */; };
+		048E4E21266BC7AA00A8746D /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E4E20266BC7AA00A8746D /* UIImage+Ext.swift */; };
+		048E4E23266BC7BF00A8746D /* MKPlacemark+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E4E22266BC7BF00A8746D /* MKPlacemark+Ext.swift */; };
+		048E4E26266BC80B00A8746D /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E4E25266BC80B00A8746D /* LocationCell.swift */; };
+		048E4E29266BC98B00A8746D /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E4E28266BC98B00A8746D /* CustomAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +37,11 @@
 		04693766266B6504001C38C0 /* shanghai.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = shanghai.gpx; path = ../../../shanghai.gpx; sourceTree = "<group>"; };
 		04693767266B6504001C38C0 /* beijing.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = beijing.gpx; path = ../../../beijing.gpx; sourceTree = "<group>"; };
 		04693768266B6504001C38C0 /* miami_florida.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = miami_florida.gpx; path = ../../../miami_florida.gpx; sourceTree = "<group>"; };
+		048E4E1D266BC4E100A8746D /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		048E4E20266BC7AA00A8746D /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
+		048E4E22266BC7BF00A8746D /* MKPlacemark+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPlacemark+Ext.swift"; sourceTree = "<group>"; };
+		048E4E25266BC80B00A8746D /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
+		048E4E28266BC98B00A8746D /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +78,10 @@
 		04365F2B2665042F001830BC /* MapsDirectionsGooglePlacesLBTA */ = {
 			isa = PBXGroup;
 			children = (
+				048E4E1F266BC78E00A8746D /* Extensions */,
 				04365F402665045A001830BC /* SupportingFiles */,
 				04365F41266504A0001830BC /* UI */,
+				048E4E1C266BC4CF00A8746D /* Custom Views */,
 				04365F3226650430001830BC /* Assets.xcassets */,
 				04365F3A26650430001830BC /* Info.plist */,
 				04365F3426650430001830BC /* Preview Content */,
@@ -98,11 +110,46 @@
 		04365F41266504A0001830BC /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				048E4E27266BC96A00A8746D /* Main */,
+				048E4E24266BC7F900A8746D /* Reusable Cell */,
 				04365F302665042F001830BC /* ContentView.swift */,
-				04365F42266504B9001830BC /* MainVC.swift */,
 				0467E9F52668C7FB003AF0C7 /* LocationCarouselVc.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		048E4E1C266BC4CF00A8746D /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				048E4E1D266BC4E100A8746D /* SearchView.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		048E4E1F266BC78E00A8746D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				048E4E20266BC7AA00A8746D /* UIImage+Ext.swift */,
+				048E4E22266BC7BF00A8746D /* MKPlacemark+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		048E4E24266BC7F900A8746D /* Reusable Cell */ = {
+			isa = PBXGroup;
+			children = (
+				048E4E25266BC80B00A8746D /* LocationCell.swift */,
+			);
+			path = "Reusable Cell";
+			sourceTree = "<group>";
+		};
+		048E4E27266BC96A00A8746D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				04365F42266504B9001830BC /* MainVC.swift */,
+				048E4E28266BC98B00A8746D /* CustomAnnotation.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,10 +228,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048E4E21266BC7AA00A8746D /* UIImage+Ext.swift in Sources */,
 				04365F2D2665042F001830BC /* AppDelegate.swift in Sources */,
 				04365F43266504B9001830BC /* MainVC.swift in Sources */,
 				04365F2F2665042F001830BC /* SceneDelegate.swift in Sources */,
+				048E4E23266BC7BF00A8746D /* MKPlacemark+Ext.swift in Sources */,
 				04365F312665042F001830BC /* ContentView.swift in Sources */,
+				048E4E26266BC80B00A8746D /* LocationCell.swift in Sources */,
+				048E4E29266BC98B00A8746D /* CustomAnnotation.swift in Sources */,
+				048E4E1E266BC4E100A8746D /* SearchView.swift in Sources */,
 				0467E9F62668C7FB003AF0C7 /* LocationCarouselVc.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

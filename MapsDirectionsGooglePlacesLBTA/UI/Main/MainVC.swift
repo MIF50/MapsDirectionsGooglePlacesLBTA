@@ -88,9 +88,10 @@ class MainVC: UIViewController {
                 let placemark = mapItem.placemark
                 print(placemark.address())
                 
-                let annotation = MKPointAnnotation()
+                let annotation = CustomAnnotation()
+                annotation.mapItem = mapItem
                 annotation.coordinate = placemark.coordinate
-                annotation.title = mapItem.name
+                annotation.title = "Location: \(mapItem.name ?? "")"
                 annotation.subtitle = placemark.subThoroughfare
                 self.mapView.addAnnotation(annotation)
                 self.locationVC.addItem(item: mapItem)
@@ -127,10 +128,16 @@ class MainVC: UIViewController {
     
     func setAnnotation(_ mapItem: MKMapItem) {
         self.mapView.annotations.forEach { annotation in
-            if annotation.title == mapItem.name {
+            guard let customAnnotation = annotation as? CustomAnnotation else { return }
+            if customAnnotation.mapItem?.name == mapItem.name {
                 self.mapView.selectAnnotation(annotation, animated: true)
             }
         }
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let annotation = view.annotation as? CustomAnnotation else { return }
+        locationVC.scrollTo(annotation)
     }
 
 }
@@ -175,103 +182,6 @@ extension MainVC: MKMapViewDelegate {
     }
 }
 
-extension UIImage {
-    
-    // resize image
-    func resize(_ size: CGSize)-> UIImage? {
-        withRenderingMode(.alwaysOriginal)
-        UIGraphicsBeginImageContext(size)
-        draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
-        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-        return resizedImage
-    }
-}
-
-// MARK:- PlaceMarkExt
-extension MKPlacemark {
-
-    var lat: Double {
-        get {
-            return location?.coordinate.latitude ?? 0
-        }
-    }
-    
-    var long: Double {
-        get {
-            return location?.coordinate.longitude ?? 0
-        }
-    }
-    
-     func address()-> String {
-        var addressString = ""
-        if subThoroughfare != nil {
-            addressString = subThoroughfare! + " "
-        }
-        if thoroughfare != nil {
-            addressString += thoroughfare! + ", "
-        }
-        if postalCode != nil {
-            addressString += postalCode! + " "
-        }
-        if locality != nil {
-            addressString += locality! + ", "
-        }
-        if administrativeArea != nil {
-            addressString += administrativeArea! + " "
-        }
-        if country != nil {
-            addressString += country!
-        }
-        return addressString
-    }
-
-}
-
-
-// MARK:- SearchView
-class SearchView: UIView {
-    
-    // MARK:- Views
-    private let searchTextField: UITextField = {
-        let text = UITextField(placeholder: "Enter your search")
-        return text
-    }()
-    
-    private var token = Set<AnyCancellable>()
-    
-    var delegate: SearchViewDelegate?
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = .white
-        stack(searchTextField).withMargins(.allSides(16))
-        setupSearch()
-    }
-    
-    private func setupSearch() {
-        NotificationCenter.default
-            .publisher(for: UITextField.textDidChangeNotification,object: searchTextField)
-            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
-            .sink { output in
-                if let text = self.searchTextField.text {
-                    self.delegate?.onSearch(query: text)
-                }
-            }
-            .store(in: &token)
-    }
-    
-    func onCancel() {
-        token.forEach { $0.cancel() }
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-protocol SearchViewDelegate {
-    func onSearch(query: String)
-}
 
 // MARK:- SwiftUI Preview
 import SwiftUI
