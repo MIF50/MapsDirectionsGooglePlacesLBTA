@@ -29,6 +29,9 @@
 		04365F3A26650430001830BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04365F42266504B9001830BC /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		0467E9F52668C7FB003AF0C7 /* LocationCarouselVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCarouselVc.swift; sourceTree = "<group>"; };
+		04693766266B6504001C38C0 /* shanghai.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = shanghai.gpx; path = ../../../shanghai.gpx; sourceTree = "<group>"; };
+		04693767266B6504001C38C0 /* beijing.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = beijing.gpx; path = ../../../beijing.gpx; sourceTree = "<group>"; };
+		04693768266B6504001C38C0 /* miami_florida.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = miami_florida.gpx; path = ../../../miami_florida.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +49,9 @@
 		04365F202665042F001830BC = {
 			isa = PBXGroup;
 			children = (
+				04693767266B6504001C38C0 /* beijing.gpx */,
+				04693768266B6504001C38C0 /* miami_florida.gpx */,
+				04693766266B6504001C38C0 /* shanghai.gpx */,
 				04365F2B2665042F001830BC /* MapsDirectionsGooglePlacesLBTA */,
 				04365F2A2665042F001830BC /* Products */,
 			);

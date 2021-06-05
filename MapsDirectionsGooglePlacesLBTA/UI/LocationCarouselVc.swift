@@ -8,22 +8,6 @@
 import UIKit
 import MapKit
 
-let newlines = CharacterSet.newlines.allCharacters
-
-extension CharacterSet {
-    var allCharacters: [Character] {
-        var result: [Character] = []
-        for plane: UInt8 in 0...16 where self.hasMember(inPlane: plane) {
-            for unicode in UInt32(plane) << 16 ..< UInt32(plane + 1) << 16 {
-                if let uniChar = UnicodeScalar(unicode), self.contains(uniChar) {
-                    result.append(Character(uniChar))
-                }
-            }
-        }
-        return result
-    }
-}
-
 class LocationCarouselVC: UIViewController {
     
     // MARK:- Views
@@ -43,7 +27,9 @@ class LocationCarouselVC: UIViewController {
         super.viewDidLoad()
         configureCollectionView()
         ///Action
-        handler.didTapItem = { itemMap in
+        handler.didTapItem = { indexPath, itemMap in
+            self.mainVC?.setAnnotation(itemMap)
+            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             
         }
     }
@@ -71,13 +57,17 @@ class LocationCarouselVC: UIViewController {
         handler.indexData.append(item)
         collectionView.reloadData()
     }
+    
+    func scrolToFirstItem() {
+        collectionView.scrollToItem(at: [0,0], at: .centeredHorizontally, animated: true)
+    }
 }
 
 // MARK:- LocationHandler
 class LocationCarouselHandler: NSObject,UICollectionViewDataSource, UICollisionBehaviorDelegate,UICollectionViewDelegateFlowLayout {
     
     var indexData = [MKMapItem]()
-    var didTapItem:((MKMapItem)-> Void)?
+    var didTapItem:((IndexPath,MKMapItem)-> Void)?
     
     func setup(_ collectoinView: UICollectionView){
         collectoinView.dataSource = self
@@ -104,7 +94,7 @@ class LocationCarouselHandler: NSObject,UICollectionViewDataSource, UICollisionB
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        didTapItem?(indexData[indexPath.item])
+        didTapItem?(indexPath,indexData[indexPath.item])
     }
 }
  

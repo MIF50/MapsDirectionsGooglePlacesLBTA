@@ -18,31 +18,38 @@ class MainVC: UIViewController {
         map.mapType = .standard
         return map
     }()
-    
     private let searchView = SearchView()
-    
     private let locationVC = LocationCarouselVC()
+    
+    private let locationManager = CLLocationManager()
     
     // MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        requestUserLocation()
         configureMap()
         configureRegionForMap()
         configureSearch()
-//        placePins()
+        placePins()
         localSearch(query: "")
         configureLocationCarousel()
+    }
+    
+    private func requestUserLocation() {
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
     }
     
     private func configureMap() {
         view.addSubview(mapView)
         mapView.fillSuperview()
         mapView.delegate = self
+        mapView.showsUserLocation = true
     }
     
     private func configureRegionForMap() {
         let centerCoordinate = CLLocationCoordinate2D(latitude: 37.7666, longitude: -122.427290)
-        let span = MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)
+        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
         let region = MKCoordinateRegion(center: centerCoordinate, span: span)
         mapView.setRegion(region, animated: true)
     }
@@ -88,6 +95,7 @@ class MainVC: UIViewController {
                 self.mapView.addAnnotation(annotation)
                 self.locationVC.addItem(item: mapItem)
             })
+            self.locationVC.scrolToFirstItem()
             self.mapView.showAnnotations(self.mapView.annotations, animated: true)
         }
     }
@@ -116,7 +124,34 @@ class MainVC: UIViewController {
             size: .init(width: 0, height: 150)
         )
     }
+    
+    func setAnnotation(_ mapItem: MKMapItem) {
+        self.mapView.annotations.forEach { annotation in
+            if annotation.title == mapItem.name {
+                self.mapView.selectAnnotation(annotation, animated: true)
+            }
+        }
+    }
 
+}
+
+// MARK:- LocationManagerDelegate
+extension MainVC: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse:
+            print("Recieved authorization of user location")
+            locationManager.startUpdatingLocation()
+        default:
+            print("Failed to authorized")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let firstLocation = locations.first else { return }
+        mapView.setRegion(.init(center: firstLocation.coordinate, span: .init(latitudeDelta: 0.1, longitudeDelta: 0.1)), animated: false)
+//        locationManager.stopUpdatingLocation()
+    }
 }
 
 // MARK:- SearchViewDelegate
@@ -130,18 +165,25 @@ extension MainVC :SearchViewDelegate {
 extension MainVC: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "id")
-        annotationView.canShowCallout = true
-        // resize image
-        let pinImage = #imageLiteral(resourceName: "tourist")
-        pinImage.withRenderingMode(.alwaysOriginal)
-        let size = CGSize.init(width: 25, height: 42)
+        if annotation is MKPointAnnotation {
+            let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "id")
+            annotationView.canShowCallout = true
+    //        annotationView.image = #imageLiteral(resourceName: "tourist").resize(.init(width: 25, height: 42))
+            return annotationView
+        }
+        return nil
+    }
+}
+
+extension UIImage {
+    
+    // resize image
+    func resize(_ size: CGSize)-> UIImage? {
+        withRenderingMode(.alwaysOriginal)
         UIGraphicsBeginImageContext(size)
-        pinImage.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
         let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-        
-        annotationView.image = resizedImage
-        return annotationView
+        return resizedImage
     }
 }
 
