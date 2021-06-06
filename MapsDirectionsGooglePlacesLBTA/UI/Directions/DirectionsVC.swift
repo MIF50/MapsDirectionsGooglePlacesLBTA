@@ -10,7 +10,6 @@ import MapKit
 import LBTATools
 import SwiftUI
 
-
 class DirectionsVC: UIViewController {
     
     // MARK:- Views
@@ -20,8 +19,10 @@ class DirectionsVC: UIViewController {
         view.backgroundColor = #colorLiteral(red: 0.2129850388, green: 0.6199089885, blue: 0.9008592963, alpha: 1)
         return view
     }()
+    private let startEndLocationView = StartEndLocationView()
     private let mapView = MKMapView()
     
+    // MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavBar()
@@ -31,6 +32,11 @@ class DirectionsVC: UIViewController {
         requestForDirections()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     private func configureNavBar() {
         view.addSubview(navBar)
         navBar.anchor(
@@ -38,8 +44,11 @@ class DirectionsVC: UIViewController {
             leading: view.leadingAnchor,
             bottom: view.safeAreaLayoutGuide.topAnchor,
             trailing: view.trailingAnchor,
-            padding: .init(top: 0, left: 0, bottom: -100, right: 0)
+            padding: .init(top: 0, left: 0, bottom: -120, right: 0)
         )
+        navBar.addSubview(startEndLocationView)
+        startEndLocationView.fillSuperviewSafeAreaLayoutGuide()
+        startEndLocationView.delegate = self
     }
     
     private func configureMap() {
@@ -96,6 +105,17 @@ class DirectionsVC: UIViewController {
     }
 }
 
+// MARK:- StartEndLocatoinViewDelegate
+extension DirectionsVC: StartEndLocationViewDelegate {
+    func didTapStartTextField() {
+        print("didTapStartTextField")
+    }
+    
+    func didTapEndTextField() {
+        print("didTapEndTextField")
+    }
+}
+
 // MARK:- MapView Delegate
 extension DirectionsVC: MKMapViewDelegate {
     /// for draw polyline in map
@@ -104,6 +124,13 @@ extension DirectionsVC: MKMapViewDelegate {
         polylineRender.strokeColor = #colorLiteral(red: 0.2129850388, green: 0.6199089885, blue: 0.9008592963, alpha: 1)
         polylineRender.lineWidth = 5
         return polylineRender
+    }
+}
+
+extension DirectionsVC {
+    static func create()->UIViewController {
+        let vc = DirectionsVC()
+        return UINavigationController(rootViewController: vc)
     }
 }
 
@@ -118,7 +145,7 @@ struct DirectionsPreview: PreviewProvider {
     
     struct ContainerView: UIViewControllerRepresentable {
         func makeUIViewController(context: Context) -> some UIViewController {
-            DirectionsVC()
+            DirectionsVC.create()
         }
         func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
             

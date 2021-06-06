@@ -21,6 +21,7 @@
 		048E4E23266BC7BF00A8746D /* MKPlacemark+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E4E22266BC7BF00A8746D /* MKPlacemark+Ext.swift */; };
 		048E4E26266BC80B00A8746D /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E4E25266BC80B00A8746D /* LocationCell.swift */; };
 		048E4E29266BC98B00A8746D /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E4E28266BC98B00A8746D /* CustomAnnotation.swift */; };
+		04DAA84B266CB66400565265 /* StartEndLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DAA84A266CB66400565265 /* StartEndLocationView.swift */; };
 		04DF5667266C7526008E1C7A /* beijing.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04DF5666266C7526008E1C7A /* beijing.gpx */; };
 		04DF566A266C7533008E1C7A /* miami_florida.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04DF5668266C7533008E1C7A /* miami_florida.gpx */; };
 		04DF566B266C7533008E1C7A /* shanghai.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04DF5669266C7533008E1C7A /* shanghai.gpx */; };
@@ -44,6 +45,7 @@
 		048E4E22266BC7BF00A8746D /* MKPlacemark+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPlacemark+Ext.swift"; sourceTree = "<group>"; };
 		048E4E25266BC80B00A8746D /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		048E4E28266BC98B00A8746D /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		04DAA84A266CB66400565265 /* StartEndLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEndLocationView.swift; sourceTree = "<group>"; };
 		04DF5666266C7526008E1C7A /* beijing.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = beijing.gpx; sourceTree = "<group>"; };
 		04DF5668266C7533008E1C7A /* miami_florida.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = miami_florida.gpx; sourceTree = "<group>"; };
 		04DF5669266C7533008E1C7A /* shanghai.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = shanghai.gpx; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				048E4E1D266BC4E100A8746D /* SearchView.swift */,
+				04DAA84A266CB66400565265 /* StartEndLocationView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				048E4E21266BC7AA00A8746D /* UIImage+Ext.swift in Sources */,
 				04DF566F266C7598008E1C7A /* DirectionsVC.swift in Sources */,
 				04365F2D2665042F001830BC /* AppDelegate.swift in Sources */,
+				04DAA84B266CB66400565265 /* StartEndLocationView.swift in Sources */,
 				04365F43266504B9001830BC /* MainVC.swift in Sources */,
 				04365F2F2665042F001830BC /* SceneDelegate.swift in Sources */,
 				048E4E23266BC7BF00A8746D /* MKPlacemark+Ext.swift in Sources */,
