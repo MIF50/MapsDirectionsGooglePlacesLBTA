@@ -26,10 +26,12 @@ class LocationCell: UICollectionViewCell {
         text: "title",
         font: .boldSystemFont(ofSize: 18)
     )
+    
     private let addressLabel = UILabel(
         text: "Address",
         numberOfLines: 0
     )
+    
     private let locatoinLabel = UILabel(
         text: "Locatoin",
         font: .systemFont(ofSize: 14),
@@ -44,15 +46,6 @@ class LocationCell: UICollectionViewCell {
             .withMargins(.allSides(16))
         vstack.spacing = 6
         setShadow()
-    }
-    
-    private func setShadow() {
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 4.0)
-        self.layer.shadowRadius = 5
-        self.layer.shadowOpacity = 0.2
-        self.layer.masksToBounds = false
-        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
     }
     
     required init?(coder: NSCoder) {
