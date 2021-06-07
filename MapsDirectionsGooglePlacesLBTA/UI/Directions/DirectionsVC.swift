@@ -9,6 +9,7 @@ import UIKit
 import MapKit
 import LBTATools
 import SwiftUI
+import JGProgressHUD
 
 class DirectionsVC: UIViewController {
     
@@ -21,6 +22,16 @@ class DirectionsVC: UIViewController {
     }()
     private let startEndLocationView = StartEndLocationView()
     private let mapView = MKMapView()
+    lazy var progress: JGProgressHUD = {
+        let progress = JGProgressHUD()
+        progress.textLabel.text = "Loading..."
+        progress.style = .dark
+        return  progress
+    }()
+    
+    // MARK:- Direction Start End Point
+    private var startMapItem: MKMapItem?
+    private var endMapItem:MKMapItem?
     
     // MARK:- LifeCycle
     override func viewDidLoad() {
@@ -28,8 +39,6 @@ class DirectionsVC: UIViewController {
         configureNavBar()
         configureMap()
         configureRegion()
-        setupStartEndDummyAnnotations()
-        requestForDirections()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,21 +96,45 @@ class DirectionsVC: UIViewController {
     
     private func requestForDirections() {
         let request = MKDirections.Request()
-        let startPlaceMark = MKPlacemark(coordinate: .init(latitude: 37.7666, longitude: -122.427290))
-        request.source = .init(placemark: startPlaceMark)
-        let endPlaceMark = MKPlacemark(coordinate: .init(latitude: 37.331352, longitude: -122.030331))
-        request.destination = .init(placemark: endPlaceMark)
+        request.source = startMapItem
+        request.destination = endMapItem
         request.requestsAlternateRoutes = true
         let directions = MKDirections(request: request)
-        directions.calculate { response, error in
+        progress.show(in: view)
+        directions.calculate { [weak self] response, error in
+            self?.progress.dismiss()
             if let error = error {
                 print("failed to make direction: \(error.localizedDescription)")
                 return
             }
             guard let route = response?.routes.first else { return }
             print("timeExpected: \(route.expectedTravelTime / 60)")
-            self.mapView.addOverlay(route.polyline)
+            self?.mapView.addOverlay(route.polyline)
         }
+    }
+    
+    func refreshMap() {
+        /// remove old annotation and overlays
+        self.mapView.removeAnnotations(mapView.annotations)
+        self.mapView.removeOverlays(mapView.overlays)
+        
+        if let mapItem = startMapItem {
+            addAnnotation(mapItem)
+        }
+        
+        if let mapItem = endMapItem {
+            addAnnotation(mapItem)
+        }
+        
+        self.mapView.showAnnotations(mapView.annotations, animated: false)
+        requestForDirections()
+    }
+    
+    private func addAnnotation(_ mapItem: MKMapItem) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = mapItem.placemark.coordinate
+        annotation.title = mapItem.name
+        mapView.addAnnotation(annotation)
     }
 }
 
@@ -111,6 +144,8 @@ extension DirectionsVC: StartEndLocationViewDelegate {
         let vc = LocationSearchVC.create()
         vc.selectionHandler = { [weak self] mapItem in
             self?.startEndLocationView.updateStartText(mapItem.name ?? "Start")
+            self?.startMapItem = mapItem
+            self?.refreshMap()
         }
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -119,6 +154,8 @@ extension DirectionsVC: StartEndLocationViewDelegate {
         let vc = LocationSearchVC.create()
         vc.selectionHandler = { [weak self] mapItem in
             self?.startEndLocationView.updateEndText(mapItem.name ?? "End")
+            self?.endMapItem = mapItem
+            self?.refreshMap()
         }
         navigationController?.pushViewController(vc, animated: true)
     }

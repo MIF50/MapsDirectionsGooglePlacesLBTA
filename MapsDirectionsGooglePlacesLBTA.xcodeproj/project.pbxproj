@@ -24,6 +24,7 @@
 		048E4E23266BC7BF00A8746D /* MKPlacemark+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E4E22266BC7BF00A8746D /* MKPlacemark+Ext.swift */; };
 		048E4E26266BC80B00A8746D /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E4E25266BC80B00A8746D /* LocationCell.swift */; };
 		048E4E29266BC98B00A8746D /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E4E28266BC98B00A8746D /* CustomAnnotation.swift */; };
+		04A075F6266DFCA8008DC104 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 04A075F5266DFCA8008DC104 /* JGProgressHUD */; };
 		04DAA84B266CB66400565265 /* StartEndLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DAA84A266CB66400565265 /* StartEndLocationView.swift */; };
 		04DF5667266C7526008E1C7A /* beijing.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04DF5666266C7526008E1C7A /* beijing.gpx */; };
 		04DF566A266C7533008E1C7A /* miami_florida.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04DF5668266C7533008E1C7A /* miami_florida.gpx */; };
@@ -64,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A075F6266DFCA8008DC104 /* JGProgressHUD in Frameworks */,
 				04365F462665056F001830BC /* LBTATools in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,6 +217,7 @@
 			name = MapsDirectionsGooglePlacesLBTA;
 			packageProductDependencies = (
 				04365F452665056F001830BC /* LBTATools */,
+				04A075F5266DFCA8008DC104 /* JGProgressHUD */,
 			);
 			productName = MapsDirectionsGooglePlacesLBTA;
 			productReference = 04365F292665042F001830BC /* MapsDirectionsGooglePlacesLBTA.app */;
@@ -245,6 +248,7 @@
 			mainGroup = 04365F202665042F001830BC;
 			packageReferences = (
 				04365F442665056F001830BC /* XCRemoteSwiftPackageReference "LBTATools" */,
+				04A075F4266DFCA8008DC104 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = 04365F2A2665042F001830BC /* Products */;
 			projectDirPath = "";
@@ -499,6 +503,14 @@
 				minimumVersion = 1.0.17;
 			};
 		};
+		04A075F4266DFCA8008DC104 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -506,6 +518,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 04365F442665056F001830BC /* XCRemoteSwiftPackageReference "LBTATools" */;
 			productName = LBTATools;
+		};
+		04A075F5266DFCA8008DC104 /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04A075F4266DFCA8008DC104 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

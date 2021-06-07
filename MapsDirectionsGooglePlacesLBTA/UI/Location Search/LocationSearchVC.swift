@@ -17,7 +17,7 @@ class LocationSearchVC: UIViewController {
     private let backIcon: UIButton = {
         let buttton = UIButton(image: #imageLiteral(resourceName: "back_arrow"))
         buttton.tintColor = .black
-        buttton.withSize(.init(width: 30, height: 30))
+        buttton.withSize(.init(width: 28, height: 30))
         buttton.addTarget(self, action: #selector(didTapBack), for: .touchUpInside)
         return buttton
     }()
@@ -25,6 +25,7 @@ class LocationSearchVC: UIViewController {
         let field = IndentedTextField(placeholder: "Enter your search", padding: 12, cornerRadius: 6)
         field.layer.borderColor = UIColor.lightGray.cgColor
         field.layer.borderWidth = 1
+        field.becomeFirstResponder()
         return field
     }()
     private let collectionView: UICollectionView = {
@@ -76,8 +77,8 @@ class LocationSearchVC: UIViewController {
         navBar.addSubview(containver)
         containver.fillSuperviewSafeAreaLayoutGuide()
         
-        containver.hstack(backIcon,searchTextField,spacing: 12,distribution: .fill)
-            .withMargins(.init(top: 0, left: 16, bottom: 12, right: 16))
+        containver.hstack(backIcon,searchTextField,spacing: 16 ,distribution: .fill)
+            .withMargins(.init(top: 8, left: 16, bottom: 12, right: 16))
     }
     
     private func configureSearchListener() {
