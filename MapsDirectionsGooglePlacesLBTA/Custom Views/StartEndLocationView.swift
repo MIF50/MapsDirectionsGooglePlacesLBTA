@@ -56,6 +56,14 @@ class StartEndLocationView: UIView {
         delegate?.didTapEndTextField()
     }
     
+    func updateStartText(_ text: String) {
+        startTextField.text = text
+    }
+    
+    func updateEndText(_ text: String) {
+        endTextField.text = text
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

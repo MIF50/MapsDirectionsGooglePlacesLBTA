@@ -108,11 +108,19 @@ class DirectionsVC: UIViewController {
 // MARK:- StartEndLocatoinViewDelegate
 extension DirectionsVC: StartEndLocationViewDelegate {
     func didTapStartTextField() {
-        print("didTapStartTextField")
+        let vc = LocationSearchVC.create()
+        vc.selectionHandler = { [weak self] mapItem in
+            self?.startEndLocationView.updateStartText(mapItem.name ?? "Start")
+        }
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func didTapEndTextField() {
-        print("didTapEndTextField")
+        let vc = LocationSearchVC.create()
+        vc.selectionHandler = { [weak self] mapItem in
+            self?.startEndLocationView.updateEndText(mapItem.name ?? "End")
+        }
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
