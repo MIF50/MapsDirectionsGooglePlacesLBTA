@@ -9,6 +9,7 @@ import UIKit
 import MapKit
 import LBTATools
 import SwiftUI
+import JGProgressHUD
 import Combine
 
 class LocationSearchVC: UIViewController {
@@ -32,6 +33,12 @@ class LocationSearchVC: UIViewController {
         let collection = UICollectionView(frame: .zero,collectionViewLayout: UICollectionViewFlowLayout())
         collection.backgroundColor = .white
         return collection
+    }()
+    private lazy var progress: JGProgressHUD = {
+        let progress = JGProgressHUD()
+        progress.textLabel.text = "Loading..."
+        progress.style = .dark
+        return  progress
     }()
     
     let navHeight:CGFloat = 66
@@ -92,16 +99,21 @@ class LocationSearchVC: UIViewController {
     }
     
     private func locateSearch() {
+        if searchTextField.text?.isEmpty == true {
+            return
+        }
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = searchTextField.text
         let search = MKLocalSearch(request: request)
-        search.start { response, error in
+        progress.show(in: view)
+        search.start { [weak self]response, error in
+            self?.progress.dismiss()
             if let error = error {
                 print("Error in locaton search: \(error.localizedDescription)")
                 return
             }
-            self.handler.indexData = response?.mapItems ?? []
-            self.collectionView.reloadData()
+            self?.handler.indexData = response?.mapItems ?? []
+            self?.collectionView.reloadData()
         }
     }
     

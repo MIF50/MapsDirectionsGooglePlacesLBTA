@@ -25,6 +25,7 @@
 		048E4E26266BC80B00A8746D /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E4E25266BC80B00A8746D /* LocationCell.swift */; };
 		048E4E29266BC98B00A8746D /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E4E28266BC98B00A8746D /* CustomAnnotation.swift */; };
 		04A075F6266DFCA8008DC104 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 04A075F5266DFCA8008DC104 /* JGProgressHUD */; };
+		04A075F9266E0708008DC104 /* RoutesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A075F8266E0708008DC104 /* RoutesVC.swift */; };
 		04DAA84B266CB66400565265 /* StartEndLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DAA84A266CB66400565265 /* StartEndLocationView.swift */; };
 		04DF5667266C7526008E1C7A /* beijing.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04DF5666266C7526008E1C7A /* beijing.gpx */; };
 		04DF566A266C7533008E1C7A /* miami_florida.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04DF5668266C7533008E1C7A /* miami_florida.gpx */; };
@@ -52,6 +53,7 @@
 		048E4E22266BC7BF00A8746D /* MKPlacemark+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPlacemark+Ext.swift"; sourceTree = "<group>"; };
 		048E4E25266BC80B00A8746D /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		048E4E28266BC98B00A8746D /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		04A075F8266E0708008DC104 /* RoutesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesVC.swift; sourceTree = "<group>"; };
 		04DAA84A266CB66400565265 /* StartEndLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEndLocationView.swift; sourceTree = "<group>"; };
 		04DF5666266C7526008E1C7A /* beijing.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = beijing.gpx; sourceTree = "<group>"; };
 		04DF5668266C7533008E1C7A /* miami_florida.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = miami_florida.gpx; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		04365F41266504A0001830BC /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				04A075F7266E06E5008DC104 /* Routes */,
 				048E4E24266BC7F900A8746D /* Reusable Cell */,
 				04594FFA266DC0F700489777 /* Location Search */,
 				04DF566D266C7588008E1C7A /* Directions */,
@@ -181,6 +184,14 @@
 				048E4E28266BC98B00A8746D /* CustomAnnotation.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		04A075F7266E06E5008DC104 /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				04A075F8266E0708008DC104 /* RoutesVC.swift */,
+			);
+			path = Routes;
 			sourceTree = "<group>";
 		};
 		04DF566C266C7574008E1C7A /* Location */ = {
@@ -286,6 +297,7 @@
 				04365F2D2665042F001830BC /* AppDelegate.swift in Sources */,
 				04DAA84B266CB66400565265 /* StartEndLocationView.swift in Sources */,
 				04365F43266504B9001830BC /* MainVC.swift in Sources */,
+				04A075F9266E0708008DC104 /* RoutesVC.swift in Sources */,
 				04365F2F2665042F001830BC /* SceneDelegate.swift in Sources */,
 				04594FFE266DCB8300489777 /* UIView+Separator.swift in Sources */,
 				048E4E23266BC7BF00A8746D /* MKPlacemark+Ext.swift in Sources */,

@@ -28,10 +28,24 @@ class DirectionsVC: UIViewController {
         progress.style = .dark
         return  progress
     }()
+    private let showRouteButton: UIButton = {
+        let button = UIButton(
+            title: "showRoute",
+            titleColor: .black,
+            font: .boldSystemFont(ofSize: 18),
+            backgroundColor: .white,
+            target: self,
+            action: #selector(didTapShowRoute)
+        )
+        return button
+    }()
     
     // MARK:- Direction Start End Point
     private var startMapItem: MKMapItem?
     private var endMapItem:MKMapItem?
+    
+    // MARK:- Current Route
+    var currentRoute: MKRoute?
     
     // MARK:- LifeCycle
     override func viewDidLoad() {
@@ -39,6 +53,7 @@ class DirectionsVC: UIViewController {
         configureNavBar()
         configureMap()
         configureRegion()
+        configureShowRoute()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,6 +124,7 @@ class DirectionsVC: UIViewController {
             }
             guard let route = response?.routes.first else { return }
             print("timeExpected: \(route.expectedTravelTime / 60)")
+            self?.currentRoute = route
             self?.mapView.addOverlay(route.polyline)
         }
     }
@@ -135,6 +151,24 @@ class DirectionsVC: UIViewController {
         annotation.coordinate = mapItem.placemark.coordinate
         annotation.title = mapItem.name
         mapView.addAnnotation(annotation)
+    }
+    
+    private func configureShowRoute() {
+        view.addSubview(showRouteButton)
+        showRouteButton.anchor(
+            top: nil,
+            leading: view.leadingAnchor,
+            bottom: view.bottomAnchor,
+            trailing: view.trailingAnchor,
+            padding: .init(top: 0, left: 16, bottom: 32, right: 16),
+            size: .init(width: 0, height: 50)
+        )
+    }
+    
+    @objc private func didTapShowRoute() {
+        let vc = RoutesVC.create()
+        vc.stepRoutes = currentRoute?.steps.filter({ !$0.instructions.isEmpty })
+        present(vc, animated: true)
     }
 }
 
