@@ -63,7 +63,7 @@ class LocationSearchVC: UIViewController {
         collectionView.fillSuperview()
 
         handler.setup(collectionView)
-        handler.didTapCell = { [weak self] mapItem in
+        handler.didTapCell = { [weak self] _, mapItem in
             self?.navigationController?.popViewController(animated: true)
             self?.selectionHandler?(mapItem)
         }
@@ -112,7 +112,7 @@ class LocationSearchVC: UIViewController {
                 print("Error in locaton search: \(error.localizedDescription)")
                 return
             }
-            self?.handler.indexData = response?.mapItems ?? []
+            self?.handler.items = response?.mapItems ?? []
             self?.collectionView.reloadData()
         }
     }
@@ -131,33 +131,10 @@ extension LocationSearchVC {
 }
 
 // MARK:- LocatoinSearchHandler
-class LocatoinSearchHandler: NSObject, UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-   
-    var indexData = [MKMapItem]()
-    var didTapCell:((MKMapItem)->Void)?
+class LocatoinSearchHandler:BaseCollectoinHandler<LocationSearchCell,MKMapItem> {
     
-    func setup(_ collectionView: UICollectionView) {
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(LocationSearchCell.self, forCellWithReuseIdentifier: LocationSearchCell.id)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return indexData.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LocationSearchCell.id, for: indexPath) as! LocationSearchCell
-        cell.itemMap = indexData[indexPath.item]
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: collectionView.frame.width, height: 70)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        didTapCell?(indexData[indexPath.item])
     }
 }
 
@@ -170,10 +147,9 @@ struct LocationSearchPreview: PreviewProvider {
     
     struct ContainerView: UIViewControllerRepresentable {
         func makeUIViewController(context: Context) -> some UIViewController {
-            return LocationSearchVC()
+            LocationSearchVC()
         }
         func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-            
         }
     }
 }

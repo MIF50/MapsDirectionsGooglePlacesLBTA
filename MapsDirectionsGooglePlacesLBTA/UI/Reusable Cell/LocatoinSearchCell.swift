@@ -10,14 +10,12 @@ import MapKit
 import LBTATools
 
 // MARK:- LocationSearchCell
-class LocationSearchCell: UICollectionViewCell {
-    
-    static let id = "LocationSearchCell"
-    
-    var itemMap: MKMapItem! {
+class LocationSearchCell: BaseCollectionCell<MKMapItem> {
+        
+    override var item: MKMapItem! {
         didSet {
-            titleLabel.text = itemMap.name
-            addressLabel.text = itemMap.placemark.address()
+            titleLabel.text = item.name
+            addressLabel.text = item.placemark.address()
         }
     }
     
@@ -25,14 +23,10 @@ class LocationSearchCell: UICollectionViewCell {
     private let titleLabel = UILabel(text: "Name", font: .boldSystemFont(ofSize: 17))
     private let addressLabel = UILabel(text: "address", font: .systemFont(ofSize: 16))
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-         stack(titleLabel,addressLabel,spacing: 4)
-            .withMargins(.allSides(16))
-        addSeparator(at: .bottom, color: .lightGray, weight: 0.5,insets: .init(top: 0, left: 16, bottom: 0, right: 16))
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func setupViews() {
+        super.setupViews()
+        stack(titleLabel,addressLabel,spacing: 4)
+           .withMargins(.allSides(16))
+        addSeparatorView()
     }
 }
