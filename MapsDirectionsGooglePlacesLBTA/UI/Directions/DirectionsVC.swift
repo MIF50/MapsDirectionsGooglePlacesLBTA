@@ -167,6 +167,7 @@ class DirectionsVC: UIViewController {
     
     @objc private func didTapShowRoute() {
         let vc = RoutesVC.create()
+        vc.route = currentRoute
         vc.stepRoutes = currentRoute?.steps.filter({ !$0.instructions.isEmpty })
         present(vc, animated: true)
     }

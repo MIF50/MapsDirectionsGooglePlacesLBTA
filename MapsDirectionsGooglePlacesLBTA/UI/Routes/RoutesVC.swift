@@ -9,34 +9,6 @@ import UIKit
 import MapKit
 import SwiftUI
 import LBTATools
-// MARK:- RouteStepCell
-class RouteStepCell: UICollectionViewCell {
-    
-    static let id =  "RouteStepCell"
-    
-    var item: MKRoute.Step! {
-        didSet {
-            nameLabel.text = item.instructions
-            let milesConversion = item.distance * 0.00062137
-            distanceLabel.text = String(format: "%.2f mi", milesConversion)
-        }
-    }
-    
-    // MARK:- Views
-    private let nameLabel = UILabel(text: "name", font: .systemFont(ofSize: 18))
-    private let distanceLabel = UILabel(text: "mile", font: .systemFont(ofSize: 14))
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        hstack(nameLabel,distanceLabel)
-            .withMargins(.allSides(12))
-        addSeparator(at: .bottom, color: .lightGray, weight: 0.5, insets: .init(top: 0, left: 12, bottom: 0, right: 12))
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
 
 class RoutesVC: UIViewController {
     
@@ -49,6 +21,12 @@ class RoutesVC: UIViewController {
     
     // MARK:- Handler
     private let handler = RoutesHander()
+    
+    var route: MKRoute! {
+        didSet {
+            handler.route = route
+        }
+    }
     
     var stepRoutes: [MKRoute.Step]! {
         didSet {
@@ -81,11 +59,23 @@ extension RoutesVC {
 class RoutesHander: NSObject,UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     var indexData = [MKRoute.Step]()
+    var route: MKRoute!
     
     func setup(_ collectionView: UICollectionView) {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(RouteStepCell.self, forCellWithReuseIdentifier: RouteStepCell.id)
+        collectionView.register(RouteHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: RouteHeader.id)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: RouteHeader.id, for: indexPath) as! RouteHeader
+        header.setupHeaderInformation(route: route)
+        return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return .init(width: 0, height: 100)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -107,16 +97,66 @@ class RoutesHander: NSObject,UICollectionViewDataSource, UICollectionViewDelegat
 // MARK:- Preview Design
 struct RoutesPreview: PreviewProvider{
     static var previews: some View {
-        ContainerView().edgesIgnoringSafeArea(.all)
+        ContainerView()
+            .previewLayout(.sizeThatFits)
+                        .padding()
+                        .previewDisplayName("Default preview")
     }
     
     struct ContainerView: UIViewControllerRepresentable {
         func makeUIViewController(context: Context) -> some UIViewController {
-            return RoutesVC()
+            return RoutesVC.create()
         }
         
         func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
             
+        }
+    }
+}
+
+struct UIElementPreview<Value: View>: View {
+
+    private let dynamicTypeSizes: [ContentSizeCategory] = [.extraSmall, .large, .extraExtraExtraLarge]
+
+    /// Filter out "base" to prevent a duplicate preview.
+    private let localizations = Bundle.main.localizations.map(Locale.init).filter { $0.identifier != "base" }
+
+    private let viewToPreview: Value
+
+    init(_ viewToPreview: Value) {
+        self.viewToPreview = viewToPreview
+    }
+
+    var body: some View {
+        Group {
+            self.viewToPreview
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .padding()
+                .previewDisplayName("Default preview 1")
+
+            self.viewToPreview
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .padding()
+                .background(Color(.systemBackground))
+                .environment(\.colorScheme, .dark)
+                .previewDisplayName("Dark Mode")
+
+            ForEach(localizations, id: \.identifier) { locale in
+                self.viewToPreview
+                    .previewLayout(PreviewLayout.sizeThatFits)
+                    .padding()
+                    .environment(\.locale, locale)
+                    .previewDisplayName(Locale.current.localizedString(forIdentifier: locale.identifier))
+            }
+
+            ForEach(dynamicTypeSizes, id: \.self) { sizeCategory in
+                self.viewToPreview
+                    .previewLayout(PreviewLayout.sizeThatFits)
+                    .padding()
+                    .environment(\.sizeCategory, sizeCategory)
+                    .previewDisplayName("\(sizeCategory)")
+            }
+
         }
     }
 }

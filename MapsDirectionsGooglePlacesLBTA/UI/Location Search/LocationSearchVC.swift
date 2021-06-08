@@ -41,7 +41,7 @@ class LocationSearchVC: UIViewController {
         return  progress
     }()
     
-    let navHeight:CGFloat = 66
+    let navHeight: CGFloat = 66
     
     // MARK:- Handler
     private let handler = LocatoinSearchHandler()

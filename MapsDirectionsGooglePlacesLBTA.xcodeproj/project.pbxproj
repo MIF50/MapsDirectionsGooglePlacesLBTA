@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0420038D266F1DF7006A29AD /* RouteStepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0420038C266F1DF7006A29AD /* RouteStepCell.swift */; };
+		0420038F266F1E9C006A29AD /* RouteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0420038E266F1E9C006A29AD /* RouteHeader.swift */; };
 		04365F2D2665042F001830BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04365F2C2665042F001830BC /* AppDelegate.swift */; };
 		04365F2F2665042F001830BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04365F2E2665042F001830BC /* SceneDelegate.swift */; };
 		04365F312665042F001830BC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04365F302665042F001830BC /* ContentView.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0420038C266F1DF7006A29AD /* RouteStepCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStepCell.swift; sourceTree = "<group>"; };
+		0420038E266F1E9C006A29AD /* RouteHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteHeader.swift; sourceTree = "<group>"; };
 		04365F292665042F001830BC /* MapsDirectionsGooglePlacesLBTA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapsDirectionsGooglePlacesLBTA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04365F2C2665042F001830BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04365F2E2665042F001830BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,8 +133,8 @@
 		04365F41266504A0001830BC /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				04A075F7266E06E5008DC104 /* Routes */,
 				048E4E24266BC7F900A8746D /* Reusable Cell */,
+				04A075F7266E06E5008DC104 /* Routes */,
 				04594FFA266DC0F700489777 /* Location Search */,
 				04DF566D266C7588008E1C7A /* Directions */,
 				04DF566C266C7574008E1C7A /* Location */,
@@ -173,6 +177,8 @@
 			children = (
 				048E4E25266BC80B00A8746D /* LocationCell.swift */,
 				04594FFF266DD68500489777 /* LocatoinSearchCell.swift */,
+				0420038C266F1DF7006A29AD /* RouteStepCell.swift */,
+				0420038E266F1E9C006A29AD /* RouteHeader.swift */,
 			);
 			path = "Reusable Cell";
 			sourceTree = "<group>";
@@ -294,9 +300,11 @@
 				048E4E21266BC7AA00A8746D /* UIImage+Ext.swift in Sources */,
 				04DF566F266C7598008E1C7A /* DirectionsVC.swift in Sources */,
 				04595000266DD68500489777 /* LocatoinSearchCell.swift in Sources */,
+				0420038D266F1DF7006A29AD /* RouteStepCell.swift in Sources */,
 				04365F2D2665042F001830BC /* AppDelegate.swift in Sources */,
 				04DAA84B266CB66400565265 /* StartEndLocationView.swift in Sources */,
 				04365F43266504B9001830BC /* MainVC.swift in Sources */,
+				0420038F266F1E9C006A29AD /* RouteHeader.swift in Sources */,
 				04A075F9266E0708008DC104 /* RoutesVC.swift in Sources */,
 				04365F2F2665042F001830BC /* SceneDelegate.swift in Sources */,
 				04594FFE266DCB8300489777 /* UIView+Separator.swift in Sources */,
