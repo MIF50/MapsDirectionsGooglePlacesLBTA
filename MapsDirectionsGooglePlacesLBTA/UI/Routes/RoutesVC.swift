@@ -30,7 +30,7 @@ class RoutesVC: UIViewController {
     
     var stepRoutes: [MKRoute.Step]! {
         didSet {
-            handler.indexData = stepRoutes
+            handler.items = stepRoutes
             collectionView.reloadData()
         }
     }
@@ -56,39 +56,19 @@ extension RoutesVC {
 }
 
 // MARK:- RoutesHandler
-class RoutesHander: NSObject,UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class RoutesHander: BaseCollectionHeaderHandler<RouteStepCell,MKRoute.Step,RouteHeader> {
     
-    var indexData = [MKRoute.Step]()
     var route: MKRoute!
     
-    func setup(_ collectionView: UICollectionView) {
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(RouteStepCell.self, forCellWithReuseIdentifier: RouteStepCell.id)
-        collectionView.register(RouteHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: RouteHeader.id)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: RouteHeader.id, for: indexPath) as! RouteHeader
+    override func setupHeader(_ header: RouteHeader) {
         header.setupHeaderInformation(route: route)
-        return header
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return .init(width: 0, height: 100)
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return indexData.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RouteStepCell.id, for: indexPath) as! RouteStepCell
-        cell.item = indexData[indexPath.item]
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: collectionView.frame.width, height: 70)
     }
 }

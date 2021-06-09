@@ -27,7 +27,7 @@ class LocationCarouselVC: UIViewController {
         super.viewDidLoad()
         configureCollectionView()
         ///Action
-        handler.didTapItem = { indexPath, itemMap in
+        handler.didTapCell = { indexPath, itemMap in
             self.mainVC?.setAnnotation(itemMap)
             self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             
@@ -44,17 +44,17 @@ class LocationCarouselVC: UIViewController {
     }
     
     func removeItems() {
-        handler.indexData = []
+        handler.items = []
         collectionView.reloadData()
     }
     
     func addItems(items: [MKMapItem]) {
-        handler.indexData = items
+        handler.items = items
         collectionView.reloadData()
     }
     
     func addItem(item: MKMapItem) {
-        handler.indexData.append(item)
+        handler.items.append(item)
         collectionView.reloadData()
     }
     
@@ -63,43 +63,20 @@ class LocationCarouselVC: UIViewController {
     }
     
     func scrollTo(_ annotation: CustomAnnotation) {
-        guard let index = handler.indexData.firstIndex(where: { $0.name == annotation.mapItem?.name }) else { return }
+        guard let index = handler.items.firstIndex(where: { $0.name == annotation.mapItem?.name }) else { return }
         collectionView.scrollToItem(at: [0,index], at: .centeredHorizontally, animated: true)
     }
 }
 
 // MARK:- LocationHandler
-class LocationCarouselHandler: NSObject,UICollectionViewDataSource, UICollisionBehaviorDelegate,UICollectionViewDelegateFlowLayout {
-    
-    var indexData = [MKMapItem]()
-    var didTapItem:((IndexPath,MKMapItem)-> Void)?
-    
-    func setup(_ collectoinView: UICollectionView){
-        collectoinView.dataSource = self
-        collectoinView.delegate = self
-        collectoinView.register(LocationCell.self, forCellWithReuseIdentifier:  LocationCell.reuseId)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return indexData.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LocationCell.reuseId, for: indexPath) as! LocationCell
-        cell.item = indexData[indexPath.item]
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+class LocationCarouselHandler: BaseCollectoinHandler<LocationCell,MKMapItem> {
+
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: collectionView.frame.width - 64, height: collectionView.frame.height)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 12
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        didTapItem?(indexPath,indexData[indexPath.item])
     }
 }
  

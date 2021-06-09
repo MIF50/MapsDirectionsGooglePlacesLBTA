@@ -21,6 +21,8 @@
 		04365F3926650430001830BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04365F3726650430001830BC /* LaunchScreen.storyboard */; };
 		04365F43266504B9001830BC /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04365F42266504B9001830BC /* MainVC.swift */; };
 		04365F462665056F001830BC /* LBTATools in Frameworks */ = {isa = PBXBuildFile; productRef = 04365F452665056F001830BC /* LBTATools */; };
+		043968A92670660400B521DC /* BaseCollectionHeaderHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043968A82670660400B521DC /* BaseCollectionHeaderHandler.swift */; };
+		043968AB267069FC00B521DC /* BaseCollectionHeaderFooterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043968AA267069FC00B521DC /* BaseCollectionHeaderFooterHandler.swift */; };
 		04594FFC266DC11E00489777 /* LocationSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04594FFB266DC11E00489777 /* LocationSearchVC.swift */; };
 		04594FFE266DCB8300489777 /* UIView+Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04594FFD266DCB8300489777 /* UIView+Separator.swift */; };
 		04595000266DD68500489777 /* LocatoinSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04594FFF266DD68500489777 /* LocatoinSearchCell.swift */; };
@@ -59,6 +61,8 @@
 		04365F3826650430001830BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04365F3A26650430001830BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04365F42266504B9001830BC /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		043968A82670660400B521DC /* BaseCollectionHeaderHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionHeaderHandler.swift; sourceTree = "<group>"; };
+		043968AA267069FC00B521DC /* BaseCollectionHeaderFooterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionHeaderFooterHandler.swift; sourceTree = "<group>"; };
 		04594FFB266DC11E00489777 /* LocationSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchVC.swift; sourceTree = "<group>"; };
 		04594FFD266DCB8300489777 /* UIView+Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Separator.swift"; sourceTree = "<group>"; };
 		04594FFF266DD68500489777 /* LocatoinSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocatoinSearchCell.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 			children = (
 				04200392266F26E3006A29AD /* BaseCollectionCell.swift */,
 				04200396266F2840006A29AD /* BaseCollectionHandler.swift */,
+				043968A82670660400B521DC /* BaseCollectionHeaderHandler.swift */,
+				043968AA267069FC00B521DC /* BaseCollectionHeaderFooterHandler.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -355,6 +361,7 @@
 				04A075F9266E0708008DC104 /* RoutesVC.swift in Sources */,
 				04365F2F2665042F001830BC /* SceneDelegate.swift in Sources */,
 				04594FFE266DCB8300489777 /* UIView+Separator.swift in Sources */,
+				043968A92670660400B521DC /* BaseCollectionHeaderHandler.swift in Sources */,
 				048E4E23266BC7BF00A8746D /* MKPlacemark+Ext.swift in Sources */,
 				04365F312665042F001830BC /* ContentView.swift in Sources */,
 				048E4E26266BC80B00A8746D /* LocationCell.swift in Sources */,
@@ -364,6 +371,7 @@
 				04200397266F2840006A29AD /* BaseCollectionHandler.swift in Sources */,
 				048E4E29266BC98B00A8746D /* CustomAnnotation.swift in Sources */,
 				048E4E1E266BC4E100A8746D /* SearchView.swift in Sources */,
+				043968AB267069FC00B521DC /* BaseCollectionHeaderFooterHandler.swift in Sources */,
 				0467E9F62668C7FB003AF0C7 /* LocationCarouselVc.swift in Sources */,
 				04200399266F298E006A29AD /* UICollectoinView+Ext.swift in Sources */,
 				04594FFC266DC11E00489777 /* LocationSearchVC.swift in Sources */,

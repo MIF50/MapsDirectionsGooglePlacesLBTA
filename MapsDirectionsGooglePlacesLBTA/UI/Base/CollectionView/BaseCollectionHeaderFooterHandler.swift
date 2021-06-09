@@ -1,23 +1,20 @@
 //
-//  BaseCollectionHandler.swift
+//  BaseCollectionHeaderFooterHandler.swift
 //  MapsDirectionsGooglePlacesLBTA
 //
-//  Created by MIF50 on 08/06/2021.
+//  Created by MIF50 on 09/06/2021.
 //
 
 import UIKit
 
-open class BaseCollectoinHandler<T: BaseCollectionCell<U>,U>
-                                 : NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+@available(iOS 11.0, tvOS 11.0, *)
+open class BaseCollectionHeaderFooterHandler<T: BaseCollectionCell<U>, U, H: UICollectionReusableView, F: UICollectionReusableView>
+                                              : NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    fileprivate let supplementaryViewId = "supplementaryViewId"
     
     open var items = [U]()
     var didTapCell:((IndexPath,U)-> Void)?
-    
-    func setup(_ collectionView: UICollectionView) {
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(T.self)
-    }
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -25,6 +22,16 @@ open class BaseCollectoinHandler<T: BaseCollectionCell<U>,U>
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: supplementaryViewId, for: indexPath)
+        if let header = supplementaryView as? H {
+            setupHeader(header)
+        } else if let footer = supplementaryView as? F {
+            setupFooter(footer)
+        }
+        return supplementaryView
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -38,6 +45,14 @@ open class BaseCollectoinHandler<T: BaseCollectionCell<U>,U>
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return .zero
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return .zero
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return .zero
     }
     
@@ -59,4 +74,8 @@ open class BaseCollectoinHandler<T: BaseCollectionCell<U>,U>
         
         return cell.systemLayoutSizeFitting(.init(width: cellWidth, height: largeHeight)).height
     }
+    
+    open func setupHeader(_ header: H) {}
+
+    open func setupFooter(_ footer: F) {}
 }
