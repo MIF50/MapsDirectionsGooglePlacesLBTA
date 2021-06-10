@@ -23,6 +23,7 @@
 		04365F462665056F001830BC /* LBTATools in Frameworks */ = {isa = PBXBuildFile; productRef = 04365F452665056F001830BC /* LBTATools */; };
 		043968A92670660400B521DC /* BaseCollectionHeaderHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043968A82670660400B521DC /* BaseCollectionHeaderHandler.swift */; };
 		043968AB267069FC00B521DC /* BaseCollectionHeaderFooterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043968AA267069FC00B521DC /* BaseCollectionHeaderFooterHandler.swift */; };
+		045169282671AED700965663 /* PlacesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045169272671AED700965663 /* PlacesVC.swift */; };
 		04594FFC266DC11E00489777 /* LocationSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04594FFB266DC11E00489777 /* LocationSearchVC.swift */; };
 		04594FFE266DCB8300489777 /* UIView+Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04594FFD266DCB8300489777 /* UIView+Separator.swift */; };
 		04595000266DD68500489777 /* LocatoinSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04594FFF266DD68500489777 /* LocatoinSearchCell.swift */; };
@@ -37,12 +38,16 @@
 		048E4E29266BC98B00A8746D /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E4E28266BC98B00A8746D /* CustomAnnotation.swift */; };
 		04A075F6266DFCA8008DC104 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 04A075F5266DFCA8008DC104 /* JGProgressHUD */; };
 		04A075F9266E0708008DC104 /* RoutesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A075F8266E0708008DC104 /* RoutesVC.swift */; };
+		04AE48A126722AE00012A9B5 /* CalloutContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE48A026722AE00012A9B5 /* CalloutContainer.swift */; };
+		04AE48A326722B250012A9B5 /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE48A226722B250012A9B5 /* PlaceAnnotation.swift */; };
+		04AE48A52672313C0012A9B5 /* HUDContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE48A42672313C0012A9B5 /* HUDContainer.swift */; };
 		04DAA84B266CB66400565265 /* StartEndLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DAA84A266CB66400565265 /* StartEndLocationView.swift */; };
 		04DF5667266C7526008E1C7A /* beijing.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04DF5666266C7526008E1C7A /* beijing.gpx */; };
 		04DF566A266C7533008E1C7A /* miami_florida.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04DF5668266C7533008E1C7A /* miami_florida.gpx */; };
 		04DF566B266C7533008E1C7A /* shanghai.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 04DF5669266C7533008E1C7A /* shanghai.gpx */; };
 		04DF566F266C7598008E1C7A /* DirectionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF566E266C7598008E1C7A /* DirectionsVC.swift */; };
 		04DF5672266C7DA2008E1C7A /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF5671266C7DA2008E1C7A /* UIView+Ext.swift */; };
+		E74DC0474BA482ABF6102840 /* Pods_MapsDirectionsGooglePlacesLBTA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EE9FD0BAF188C9A4E67D809 /* Pods_MapsDirectionsGooglePlacesLBTA.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +68,7 @@
 		04365F42266504B9001830BC /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		043968A82670660400B521DC /* BaseCollectionHeaderHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionHeaderHandler.swift; sourceTree = "<group>"; };
 		043968AA267069FC00B521DC /* BaseCollectionHeaderFooterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionHeaderFooterHandler.swift; sourceTree = "<group>"; };
+		045169272671AED700965663 /* PlacesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesVC.swift; sourceTree = "<group>"; };
 		04594FFB266DC11E00489777 /* LocationSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchVC.swift; sourceTree = "<group>"; };
 		04594FFD266DCB8300489777 /* UIView+Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Separator.swift"; sourceTree = "<group>"; };
 		04594FFF266DD68500489777 /* LocatoinSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocatoinSearchCell.swift; sourceTree = "<group>"; };
@@ -76,12 +82,18 @@
 		048E4E25266BC80B00A8746D /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		048E4E28266BC98B00A8746D /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		04A075F8266E0708008DC104 /* RoutesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesVC.swift; sourceTree = "<group>"; };
+		04AE48A026722AE00012A9B5 /* CalloutContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalloutContainer.swift; sourceTree = "<group>"; };
+		04AE48A226722B250012A9B5 /* PlaceAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
+		04AE48A42672313C0012A9B5 /* HUDContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDContainer.swift; sourceTree = "<group>"; };
 		04DAA84A266CB66400565265 /* StartEndLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEndLocationView.swift; sourceTree = "<group>"; };
 		04DF5666266C7526008E1C7A /* beijing.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = beijing.gpx; sourceTree = "<group>"; };
 		04DF5668266C7533008E1C7A /* miami_florida.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = miami_florida.gpx; sourceTree = "<group>"; };
 		04DF5669266C7533008E1C7A /* shanghai.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = shanghai.gpx; sourceTree = "<group>"; };
 		04DF566E266C7598008E1C7A /* DirectionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsVC.swift; sourceTree = "<group>"; };
 		04DF5671266C7DA2008E1C7A /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		2EE9FD0BAF188C9A4E67D809 /* Pods_MapsDirectionsGooglePlacesLBTA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapsDirectionsGooglePlacesLBTA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A202A32BF82776F7A3D5827 /* Pods-MapsDirectionsGooglePlacesLBTA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapsDirectionsGooglePlacesLBTA.debug.xcconfig"; path = "Target Support Files/Pods-MapsDirectionsGooglePlacesLBTA/Pods-MapsDirectionsGooglePlacesLBTA.debug.xcconfig"; sourceTree = "<group>"; };
+		9A92B2A50A7E0532CB91A9B1 /* Pods-MapsDirectionsGooglePlacesLBTA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapsDirectionsGooglePlacesLBTA.release.xcconfig"; path = "Target Support Files/Pods-MapsDirectionsGooglePlacesLBTA/Pods-MapsDirectionsGooglePlacesLBTA.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +103,7 @@
 			files = (
 				04A075F6266DFCA8008DC104 /* JGProgressHUD in Frameworks */,
 				04365F462665056F001830BC /* LBTATools in Frameworks */,
+				E74DC0474BA482ABF6102840 /* Pods_MapsDirectionsGooglePlacesLBTA.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +138,8 @@
 				04DF5666266C7526008E1C7A /* beijing.gpx */,
 				04365F2B2665042F001830BC /* MapsDirectionsGooglePlacesLBTA */,
 				04365F2A2665042F001830BC /* Products */,
+				F50BB908AAAF7DED194C047B /* Pods */,
+				59B376822198ABDF4B8C9303 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,6 +188,7 @@
 			children = (
 				04200390266F26BE006A29AD /* Base */,
 				048E4E24266BC7F900A8746D /* Reusable Cell */,
+				045169262671AE9C00965663 /* Places */,
 				04A075F7266E06E5008DC104 /* Routes */,
 				04594FFA266DC0F700489777 /* Location Search */,
 				04DF566D266C7588008E1C7A /* Directions */,
@@ -181,6 +197,17 @@
 				04365F302665042F001830BC /* ContentView.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		045169262671AE9C00965663 /* Places */ = {
+			isa = PBXGroup;
+			children = (
+				045169272671AED700965663 /* PlacesVC.swift */,
+				04AE48A026722AE00012A9B5 /* CalloutContainer.swift */,
+				04AE48A226722B250012A9B5 /* PlaceAnnotation.swift */,
+				04AE48A42672313C0012A9B5 /* HUDContainer.swift */,
+			);
+			path = Places;
 			sourceTree = "<group>";
 		};
 		04594FFA266DC0F700489777 /* Location Search */ = {
@@ -267,6 +294,23 @@
 			path = Directions;
 			sourceTree = "<group>";
 		};
+		59B376822198ABDF4B8C9303 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2EE9FD0BAF188C9A4E67D809 /* Pods_MapsDirectionsGooglePlacesLBTA.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F50BB908AAAF7DED194C047B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3A202A32BF82776F7A3D5827 /* Pods-MapsDirectionsGooglePlacesLBTA.debug.xcconfig */,
+				9A92B2A50A7E0532CB91A9B1 /* Pods-MapsDirectionsGooglePlacesLBTA.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -274,9 +318,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04365F3D26650430001830BC /* Build configuration list for PBXNativeTarget "MapsDirectionsGooglePlacesLBTA" */;
 			buildPhases = (
+				DACCEEBDE8CAB85D78D94E23 /* [CP] Check Pods Manifest.lock */,
 				04365F252665042F001830BC /* Sources */,
 				04365F262665042F001830BC /* Frameworks */,
 				04365F272665042F001830BC /* Resources */,
+				0F17A9A76EBC2DF92C39D44A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -343,11 +389,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F17A9A76EBC2DF92C39D44A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MapsDirectionsGooglePlacesLBTA/Pods-MapsDirectionsGooglePlacesLBTA-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MapsDirectionsGooglePlacesLBTA/Pods-MapsDirectionsGooglePlacesLBTA-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MapsDirectionsGooglePlacesLBTA/Pods-MapsDirectionsGooglePlacesLBTA-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DACCEEBDE8CAB85D78D94E23 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MapsDirectionsGooglePlacesLBTA-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		04365F252665042F001830BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04AE48A126722AE00012A9B5 /* CalloutContainer.swift in Sources */,
 				048E4E21266BC7AA00A8746D /* UIImage+Ext.swift in Sources */,
 				04DF566F266C7598008E1C7A /* DirectionsVC.swift in Sources */,
 				04595000266DD68500489777 /* LocatoinSearchCell.swift in Sources */,
@@ -355,6 +444,7 @@
 				04365F2D2665042F001830BC /* AppDelegate.swift in Sources */,
 				0483548A266F5206003CF848 /* UITableView+Ext.swift in Sources */,
 				04200393266F26E3006A29AD /* BaseCollectionCell.swift in Sources */,
+				045169282671AED700965663 /* PlacesVC.swift in Sources */,
 				04DAA84B266CB66400565265 /* StartEndLocationView.swift in Sources */,
 				04365F43266504B9001830BC /* MainVC.swift in Sources */,
 				0420038F266F1E9C006A29AD /* RouteHeader.swift in Sources */,
@@ -362,6 +452,8 @@
 				04365F2F2665042F001830BC /* SceneDelegate.swift in Sources */,
 				04594FFE266DCB8300489777 /* UIView+Separator.swift in Sources */,
 				043968A92670660400B521DC /* BaseCollectionHeaderHandler.swift in Sources */,
+				04AE48A326722B250012A9B5 /* PlaceAnnotation.swift in Sources */,
+				04AE48A52672313C0012A9B5 /* HUDContainer.swift in Sources */,
 				048E4E23266BC7BF00A8746D /* MKPlacemark+Ext.swift in Sources */,
 				04365F312665042F001830BC /* ContentView.swift in Sources */,
 				048E4E26266BC80B00A8746D /* LocationCell.swift in Sources */,
@@ -511,6 +603,7 @@
 		};
 		04365F3E26650430001830BC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A202A32BF82776F7A3D5827 /* Pods-MapsDirectionsGooglePlacesLBTA.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -532,6 +625,7 @@
 		};
 		04365F3F26650430001830BC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A92B2A50A7E0532CB91A9B1 /* Pods-MapsDirectionsGooglePlacesLBTA.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
