@@ -10,6 +10,7 @@ import SwiftUI
 import GooglePlaces
 import LBTATools
 import MapKit
+import JGProgressHUD
 
 class PlacesVC: UIViewController {
     
@@ -70,7 +71,61 @@ class PlacesVC: UIViewController {
             padding: .allSides(16),
             size: .init(width: 0, height: 125)
         )
+        ///Actions
+        hudContainer.didTapInfoButton = {
+            self.handleInformatoin()
+        }
+    }
+    
+    fileprivate func handleInformatoin() {
+        guard let placeAnnotation = self.mapView.selectedAnnotations.first as? PlaceAnnotation else { return }
+        // showloading
+        let hud = showLoading()
+        guard let placeId = placeAnnotation.place.placeID else { return }
+        client.lookUpPhotos(forPlaceID: placeId) { [weak self] list, error in
+            if let error = error {
+                print("failed to lookuPhotos: \(error.localizedDescription)")
+                hud.dismiss()
+                return
+            }
+            self?.fetchAllPhotos(list, hud: hud)
+        }
+    }
+    
+    fileprivate func fetchAllPhotos(_ list: GMSPlacePhotoMetadataList?, hud: JGProgressHUD) {
+        let dispatchGroup = DispatchGroup()
+        var images = [UIImage]()
+        list?.results.forEach({ metaDataPhoto in
+            dispatchGroup.enter()
+            self.client.loadPlacePhoto(metaDataPhoto) { image, error in
+                if let error = error {
+                    print("failed to load placePhoto: \(error.localizedDescription)")
+                    hud.dismiss()
+                    return
+                }
+                dispatchGroup.leave()
+                guard let image = image else { return }
+                images.append(image)
+            }
+        })
         
+        dispatchGroup.notify(queue: .main) {
+            hud.dismiss()
+            self.presentPhotoPlaceVC(images)
+        }
+    }
+    
+    fileprivate func showLoading()-> JGProgressHUD {
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Loading photos.."
+        hud.show(in: view)
+        return hud
+    }
+    
+    fileprivate func presentPhotoPlaceVC(_ images: [UIImage]) {
+        let vc = PhotoPlaceVC.create()
+        vc.addImages(images)
+        self.present(UINavigationController(rootViewController: vc), animated: true)
     }
     
     fileprivate func setupHUD(_ placeAnnotation: PlaceAnnotation) {

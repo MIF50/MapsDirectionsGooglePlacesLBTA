@@ -16,8 +16,14 @@ class HUDContainer: UIView {
     private let hudTypesLabel = UILabel(text: "Types", textColor: .gray)
     private lazy var infoButton = UIButton(type: .infoLight)
     
+    var didTapInfoButton:(()->Void)?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        commonInit()
+    }
+    
+    private func commonInit() {
         backgroundColor = .white
         layer.cornerRadius = 5
         setupShadow(opacity: 0.2, radius: 5, offset: .zero, color: .darkGray)
@@ -28,6 +34,11 @@ class HUDContainer: UIView {
             stack(topRow,hudAddressLabel,hudTypesLabel, spacing: 8),
             alignment: .center
         ).withMargins(.allSides(16))
+        infoButton.addTarget(self, action: #selector(handleTapInfo), for: .touchUpInside)
+    }
+    
+    @objc private func handleTapInfo() {
+        self.didTapInfoButton?()
     }
     
     func setupHUD(_ placeAnnotation: PlaceAnnotation) {
