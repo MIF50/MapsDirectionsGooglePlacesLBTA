@@ -30,7 +30,6 @@ class LocationCarouselVC: UIViewController {
         handler.didTapCell = { indexPath, itemMap in
             self.mainVC?.setAnnotation(itemMap)
             self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            
         }
     }
     

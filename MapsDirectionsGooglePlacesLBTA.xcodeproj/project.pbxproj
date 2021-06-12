@@ -28,6 +28,7 @@
 		04594FFE266DCB8300489777 /* UIView+Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04594FFD266DCB8300489777 /* UIView+Separator.swift */; };
 		04595000266DD68500489777 /* LocatoinSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04594FFF266DD68500489777 /* LocatoinSearchCell.swift */; };
 		04631FA72674687A004B5311 /* PhotoPlaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04631FA62674687A004B5311 /* PhotoPlaceVC.swift */; };
+		04631FAB26748DC0004B5311 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04631FAA26748DC0004B5311 /* PhotoCell.swift */; };
 		0467E9F62668C7FB003AF0C7 /* LocationCarouselVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0467E9F52668C7FB003AF0C7 /* LocationCarouselVc.swift */; };
 		04835486266F5035003CF848 /* BaseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04835485266F5035003CF848 /* BaseTableCell.swift */; };
 		04835488266F5055003CF848 /* BaseTableHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04835487266F5055003CF848 /* BaseTableHandler.swift */; };
@@ -74,6 +75,7 @@
 		04594FFD266DCB8300489777 /* UIView+Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Separator.swift"; sourceTree = "<group>"; };
 		04594FFF266DD68500489777 /* LocatoinSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocatoinSearchCell.swift; sourceTree = "<group>"; };
 		04631FA62674687A004B5311 /* PhotoPlaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPlaceVC.swift; sourceTree = "<group>"; };
+		04631FAA26748DC0004B5311 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		0467E9F52668C7FB003AF0C7 /* LocationCarouselVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCarouselVc.swift; sourceTree = "<group>"; };
 		04835485266F5035003CF848 /* BaseTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableCell.swift; sourceTree = "<group>"; };
 		04835487266F5055003CF848 /* BaseTableHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableHandler.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				04594FFF266DD68500489777 /* LocatoinSearchCell.swift */,
 				0420038C266F1DF7006A29AD /* RouteStepCell.swift */,
 				0420038E266F1E9C006A29AD /* RouteHeader.swift */,
+				04631FAA26748DC0004B5311 /* PhotoCell.swift */,
 			);
 			path = "Reusable Cell";
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				048E4E23266BC7BF00A8746D /* MKPlacemark+Ext.swift in Sources */,
 				04365F312665042F001830BC /* ContentView.swift in Sources */,
 				048E4E26266BC80B00A8746D /* LocationCell.swift in Sources */,
+				04631FAB26748DC0004B5311 /* PhotoCell.swift in Sources */,
 				04200395266F27D8006A29AD /* ReusableView+Ext.swift in Sources */,
 				04835486266F5035003CF848 /* BaseTableCell.swift in Sources */,
 				04DF5672266C7DA2008E1C7A /* UIView+Ext.swift in Sources */,

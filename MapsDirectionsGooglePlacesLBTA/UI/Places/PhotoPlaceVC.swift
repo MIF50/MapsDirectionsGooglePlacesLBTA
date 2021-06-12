@@ -8,24 +8,6 @@
 import UIKit
 import SwiftUI
 
-class PhotoCell: BaseCollectionCell<UIImage> {
-    // MARK:- Views
-    let imageView = UIImageView(image: nil, contentMode: .scaleAspectFill)
-    
-    override var item: UIImage! {
-        didSet {
-            imageView.image = item
-        }
-    }
-    
-    override func setupViews() {
-        super.setupViews()
-        backgroundColor = .red
-        addSubview(imageView)
-        imageView.fillSuperview()
-    }
-}
-
 class PhotoPlaceVC: UIViewController {
     
     // MARK:- Views
@@ -56,20 +38,20 @@ class PhotoPlaceVC: UIViewController {
     }
 }
 
-// MARK:- PhotoPlaceHandler
-class PhotoPlaceHandler: BaseCollectoinHandler<PhotoCell,UIImage> {
-    
-    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: collectionView.frame.width, height: 300)
-    }
-}
-
 // MARK:- Create
 extension PhotoPlaceVC {
     static func create() -> PhotoPlaceVC {
         let vc = PhotoPlaceVC()
         vc.title = "Photos"
         return vc
+    }
+}
+
+// MARK:- PhotoPlaceHandler
+class PhotoPlaceHandler: BaseCollectoinHandler<PhotoCell,UIImage> {
+    
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return .init(width: collectionView.frame.width, height: 300)
     }
 }
 

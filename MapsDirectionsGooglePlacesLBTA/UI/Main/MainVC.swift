@@ -69,7 +69,6 @@ class MainVC: UIViewController {
         mapView.showAnnotations(self.mapView.annotations, animated: true)
     }
     
-   
     private func localSearch(query: String) {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = query
@@ -139,7 +138,6 @@ class MainVC: UIViewController {
         guard let annotation = view.annotation as? CustomAnnotation else { return }
         locationVC.scrollTo(annotation)
     }
-
 }
 
 // MARK:- LocationManagerDelegate
